@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Girlsgiving 2026 💕 RSVP</title>
+<meta name="description" content="You're invited to Girlsgiving 2026 — Saturday 28th November. RSVP here! 🍂💕">
+<!-- These show up as the preview card when the link is pasted into WhatsApp -->
+<meta property="og:title" content="Girlsgiving 2026 💕 You're invited!">
+<meta property="og:description" content="Saturday 28th November 🍂 Good food, thoughtful gifts & my favourite girls. Tap to RSVP 💌">
+<meta name="theme-color" content="#F6D6D6">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8F3;
+    --paper:#FFFDFB;
+    --blush:#F6D6D6;
+    --blush-soft:#FBE9E7;
+    --rose:#C97B84;
+    --rose-deep:#A85C6A;
+    --plum:#6E3B47;
+    --ink:#4A2A31;
+    --muted:#8C6670;
+    --gold:#D9A35B;
+    --leaf:#C8743B;
+    --line:#EFD3D0;
+    --shadow:0 10px 30px rgba(168,92,106,.14);
+    --radius:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Quicksand',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    background-image:
+      radial-gradient(circle at 10% 0%, #FBE3E1 0, transparent 40%),
+      radial-gradient(circle at 100% 30%, #FCEBDD 0, transparent 35%),
+      radial-gradient(circle at 0% 80%, #FBE9E7 0, transparent 35%);
+    line-height:1.6;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:0 18px}
+
+  /* ---------- falling leaves & petals ---------- */
+  .falling{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .falling span{
+    position:absolute;top:-40px;font-size:22px;opacity:.75;
+    animation:fall linear infinite;
+  }
+  @keyframes fall{
+    0%{transform:translate(0,-40px) rotate(0)}
+    50%{transform:translate(40px,50vh) rotate(180deg)}
+    100%{transform:translate(-20px,105vh) rotate(360deg)}
+  }
+  @media (prefers-reduced-motion:reduce){.falling{display:none}}
+
+  main{position:relative;z-index:1}
+
+  /* ---------- hero ---------- */
+  .hero{text-align:center;padding:56px 18px 30px}
+  .badge{
+    display:inline-block;background:var(--paper);border:1.5px solid var(--line);
+    color:var(--rose-deep);font-weight:600;font-size:13px;letter-spacing:.06em;
+    padding:6px 14px;border-radius:999px;text-transform:uppercase;
+  }
+  .hero h1{
+    font-family:'Dancing Script',cursive;font-weight:700;
+    font-size:clamp(64px,18vw,104px);line-height:1;color:var(--rose-deep);
+    margin:18px 0 6px;
+    text-shadow:3px 3px 0 var(--blush);
+  }
+  .hero .year{font-family:'Fraunces',serif;font-size:20px;color:var(--plum);letter-spacing:.3em}
+  .hero p.tag{margin:18px auto 0;max-width:420px;font-size:17px;color:var(--muted)}
+
+  .date-card{
+    margin:28px auto 0;background:var(--paper);border-radius:var(--radius);
+    box-shadow:var(--shadow);border:1.5px solid var(--line);
+    padding:22px 20px;max-width:420px;
+  }
+  .date-card .day{font-family:'Fraunces',serif;font-size:24px;color:var(--plum);font-weight:600}
+  .date-card .small{color:var(--muted);font-size:14px;margin-top:2px}
+  .sleeps{
+    display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px;
+    padding-top:16px;border-top:1.5px dashed var(--line);
+  }
+  .sleeps .num{
+    font-family:'Fraunces',serif;font-size:44px;font-weight:600;color:var(--rose-deep);line-height:1;
+  }
+  .sleeps .lbl{text-align:left;font-weight:600;color:var(--plum);font-size:15px;line-height:1.3}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--rose-deep);color:#fff;border:none;cursor:pointer;
+    font-family:inherit;font-weight:700;font-size:17px;
+    padding:15px 30px;border-radius:999px;text-decoration:none;
+    box-shadow:0 8px 20px rgba(168,92,106,.35);
+    transition:transform .15s ease, box-shadow .15s ease, background .15s;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(168,92,106,.4)}
+  .btn:active{transform:translateY(0)}
+  .btn:disabled{opacity:.6;cursor:wait;transform:none}
+  .hero .btn{margin-top:28px}
+
+  /* ---------- section headings ---------- */
+  section{padding:34px 0}
+  h2{
+    font-family:'Fraunces',serif;font-weight:600;font-size:28px;color:var(--plum);
+    text-align:center;margin-bottom:6px;
+  }
+  .sub{text-align:center;color:var(--muted);margin-bottom:24px}
+
+  /* ---------- plan cards ---------- */
+  .plan{display:grid;gap:14px}
+  .plan .card{
+    background:var(--paper);border:1.5px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;display:flex;gap:16px;align-items:center;box-shadow:var(--shadow);
+    transition:transform .2s;
+  }
+  .plan .card:hover{transform:rotate(-1deg) scale(1.01)}
+  .plan .emoji{
+    font-size:30px;width:58px;height:58px;flex:0 0 58px;border-radius:50%;
+    background:var(--blush-soft);display:grid;place-items:center;
+  }
+  .plan h3{font-family:'Fraunces',serif;font-size:18px;color:var(--plum);font-weight:600}
+  .plan p{font-size:15px;color:var(--muted)}
+
+  /* ---------- form ---------- */
+  .form-card{
+    background:var(--paper);border-radius:28px;border:1.5px solid var(--line);
+    box-shadow:var(--shadow);padding:28px 22px;
+  }
+  .field{margin-bottom:26px}
+  .field > label, .field > .q{
+    display:block;font-weight:700;color:var(--plum);margin-bottom:10px;font-size:16px;
+  }
+  .hint{font-weight:500;color:var(--muted);font-size:13px}
+  input[type=text], textarea{
+    width:100%;font-family:inherit;font-size:16px;color:var(--ink);
+    background:var(--cream);border:1.5px solid var(--line);border-radius:14px;
+    padding:13px 15px;outline:none;transition:border-color .15s, box-shadow .15s;
+  }
+  input[type=text]:focus, textarea:focus{border-color:var(--rose);box-shadow:0 0 0 4px rgba(201,123,132,.18)}
+  textarea{resize:vertical;min-height:96px}
+
+  /* attending cards */
+  .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .choice input{position:absolute;opacity:0;pointer-events:none}
+  .choice label{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    text-align:center;cursor:pointer;height:100%;
+    background:var(--cream);border:2px solid var(--line);border-radius:18px;
+    padding:14px 6px;font-weight:600;font-size:14px;color:var(--plum);line-height:1.25;
+    transition:all .18s ease;
+  }
+  .choice label .big{font-size:32px;transition:transform .25s}
+  .choice label:hover{border-color:var(--rose)}
+  .choice input:checked + label{
+    background:var(--blush);border-color:var(--rose-deep);
+    box-shadow:0 6px 16px rgba(168,92,106,.22);transform:translateY(-3px);
+  }
+  .choice input:checked + label .big{transform:scale(1.2) rotate(-8deg)}
+  .choice input:focus-visible + label{outline:3px solid var(--rose);outline-offset:2px}
+
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip input{position:absolute;opacity:0;pointer-events:none}
+  .chip label{
+    display:inline-block;cursor:pointer;user-select:none;
+    background:var(--cream);border:1.5px solid var(--line);border-radius:999px;
+    padding:8px 14px;font-size:14px;font-weight:600;color:var(--plum);
+    transition:all .15s;
+  }
+  .chip label:hover{border-color:var(--rose)}
+  .chip input:checked + label{background:var(--rose-deep);border-color:var(--rose-deep);color:#fff}
+  .chip input:focus-visible + label{outline:3px solid var(--rose);outline-offset:2px}
+
+  .extra{overflow:hidden;transition:max-height .4s ease, opacity .3s ease}
+  .extra.hidden{max-height:0 !important;opacity:0;pointer-events:none}
+  .mt{margin-top:10px}
+
+  .error{
+    display:none;background:#FDECEC;border:1.5px solid #F3B7B7;color:#9B3B3B;
+    padding:12px 14px;border-radius:14px;font-size:14px;font-weight:600;margin-bottom:16px;
+  }
+  .submit-row{text-align:center}
+  .submit-row .btn{width:100%;max-width:340px}
+
+  /* thank-you */
+  .thanks{display:none;text-align:center;padding:16px 4px}
+  .thanks .big{font-size:64px;animation:pop .6s ease}
+  .thanks h3{font-family:'Dancing Script',cursive;font-size:44px;color:var(--rose-deep);margin:6px 0}
+  .thanks p{color:var(--muted);max-width:420px;margin:0 auto 10px}
+  .thanks .link{background:none;border:none;color:var(--rose-deep);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;margin-top:10px}
+  @keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.2)}100%{transform:scale(1)}}
+
+  /* confetti */
+  .confetti{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+  .confetti span{position:absolute;top:-30px;font-size:24px;animation:burst 2.6s ease-in forwards}
+  @keyframes burst{
+    0%{transform:translateY(0) rotate(0);opacity:1}
+    100%{transform:translateY(110vh) rotate(540deg);opacity:.2}
+  }
+
+  footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 0 50px}
+  footer .script{font-family:'Dancing Script',cursive;font-size:26px;color:var(--rose-deep);display:block}
+
+  @media (max-width:420px){
+    .choice label{font-size:13px;padding:12px 4px}
+    .choice label .big{font-size:28px}
+    .form-card{padding:24px 16px}
+  }
+</style>
+</head>
+<body>
+
+<div class="falling" id="falling" aria-hidden="true"></div>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <header class="hero wrap">
+    <span class="badge">🍂 Our annual tradition · Year 2 🍂</span>
+    <h1>Girlsgiving</h1>
+    <div class="year">2026</div>
+    <p class="tag">Good food, thoughtful gifts &amp; my favourite girls around one table 💕</p>
+
+    <div class="date-card">
+      <div class="day">Saturday 28th November</div>
+      <div class="small">Time &amp; address coming soon in the group chat 💌</div>
+      <div class="sleeps">
+        <span class="num" id="sleeps">–</span>
+        <span class="lbl" id="sleepsLbl">sleeps until<br>Girlsgiving 🥰</span>
+      </div>
+    </div>
+
+    <a href="#rsvp" class="btn">RSVP 💌</a>
+  </header>
+
+  <!-- ================= THE PLAN ================= -->
+  <section class="wrap">
+    <h2>The plan ✨</h2>
+    <p class="sub">A cosy night in, girls only</p>
+    <div class="plan">
+      <div class="card">
+        <div class="emoji">🍗</div>
+        <div><h3>A home-cooked feast</h3><p>Sharon's cooking for us again, so come hungry 👩🏽‍🍳🥧</p></div>
+      </div>
+      <div class="card">
+        <div class="emoji">🎁</div>
+        <div><h3>The gift exchange</h3><p>Budget &amp; style being decided in the group chat 🤫</p></div>
+      </div>
+      <div class="card">
+        <div class="emoji">💕</div>
+        <div><h3>Gratitude, gossip &amp; good vibes</h3><p>Lots of laughs, hugs and catching up 🥂</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RSVP ================= -->
+  <section class="wrap" id="rsvp">
+    <h2>RSVP 💌</h2>
+    <p class="sub">Let me know if you're coming so I can plan food &amp; gifts 🫶</p>
+
+    <div class="form-card">
+      <form id="rsvpForm" novalidate>
+        <div class="error" id="error" role="alert"></div>
+
+        <div class="field">
+          <label for="name">Your name 🌸</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Amara" autocomplete="given-name" maxlength="60">
+        </div>
+
+        <div class="field">
+          <span class="q">Are you coming? 🥺</span>
+          <div class="choices" role="radiogroup">
+            <div class="choice">
+              <input type="radio" name="attending" id="att-yes" value="Yes">
+              <label for="att-yes"><span class="big">🥳</span>Wouldn't miss it!</label>
+            </div>
+            <div class="choice">
+              <input type="radio" name="attending" id="att-maybe" value="Maybe">
+              <label for="att-maybe"><span class="big">🤔</span>Maybe, I'll confirm</label>
+            </div>
+            <div class="choice">
+              <input type="radio" name="attending" id="att-no" value="No">
+              <label for="att-no"><span class="big">😢</span>Can't make it</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Only shown for Yes / Maybe -->
+        <div class="extra" id="extra">
+          <div class="field">
+            <span class="q">Any dietary needs? 🥗 <span class="hint">(tap all that apply)</span></span>
+            <div class="chips" id="dietChips">
+              <div class="chip"><input type="checkbox" id="d1" value="None"><label for="d1">I eat everything 😋</label></div>
+              <div class="chip"><input type="checkbox" id="d2" value="Vegetarian"><label for="d2">Vegetarian 🥦</label></div>
+              <div class="chip"><input type="checkbox" id="d3" value="Vegan"><label for="d3">Vegan 🌱</label></div>
+              <div class="chip"><input type="checkbox" id="d4" value="Halal"><label for="d4">Halal</label></div>
+              <div class="chip"><input type="checkbox" id="d5" value="Gluten-free"><label for="d5">Gluten-free 🌾</label></div>
+              <div class="chip"><input type="checkbox" id="d6" value="Dairy-free"><label for="d6">Dairy-free 🥛</label></div>
+              <div class="chip"><input type="checkbox" id="d7" value="No pork"><label for="d7">No pork 🐷</label></div>
+              <div class="chip"><input type="checkbox" id="d8" value="Allergy"><label for="d8">I have an allergy ⚠️</label></div>
+            </div>
+            <input type="text" id="dietNotes" class="mt" placeholder="Allergies or anything else I should know? 💭" maxlength="200">
+          </div>
+
+          <div class="field">
+            <span class="q">What are you most excited for? 🤩 <span class="hint">(pick as many as you like)</span></span>
+            <div class="chips" id="exciteChips">
+              <div class="chip"><input type="checkbox" id="e1" value="The food"><label for="e1">The food 🍗</label></div>
+              <div class="chip"><input type="checkbox" id="e2" value="The gifts"><label for="e2">The gifts 🎁</label></div>
+              <div class="chip"><input type="checkbox" id="e3" value="The gossip"><label for="e3">The gossip 💅🏽</label></div>
+              <div class="chip"><input type="checkbox" id="e4" value="The photos"><label for="e4">The photos 📸</label></div>
+              <div class="chip"><input type="checkbox" id="e5" value="The hugs"><label for="e5">The hugs 🤗</label></div>
+              <div class="chip"><input type="checkbox" id="e6" value="Dessert"><label for="e6">Dessert 🥧</label></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="song">Add a song to the Girlsgiving playlist 🎶</label>
+            <input type="text" id="song" placeholder="Song – Artist" maxlength="100">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="note">A little note for the host 💌 <span class="hint">(optional)</span></label>
+          <textarea id="note" placeholder="Something you're thankful for, a menu request, or just some love 🥰" maxlength="500"></textarea>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn" id="submitBtn">Send my RSVP 💕</button>
+        </div>
+      </form>
+
+      <!-- Thank-you message (shown after submitting) -->
+      <div class="thanks" id="thanks" aria-live="polite">
+        <div class="big" id="thanksEmoji">🥳</div>
+        <h3 id="thanksTitle">Yay!</h3>
+        <p id="thanksText"></p>
+        <button class="link" id="again" type="button">Need to change something? Send another RSVP</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <span class="script">with love, Sharon</span>
+    Girlsgiving 2026 · 🍂🌸🍁
+  </footer>
+</main>
+
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<script>
+  /* =========================================================
+     ✏️ SETTINGS — the only part you need to edit
+     ========================================================= */
+  const CONFIG = {
+    // Paste your Google Apps Script "Web app URL" between the quotes (see the setup guide).
+    // While this is left as-is, the form works in "preview mode": it shows the thank-you
+    // message but doesn't save anything.
+    scriptUrl: "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE",
+    eventDate: "2026-11-28"   // YYYY-MM-DD
+  };
+
+  /* ---------- falling leaves & petals ---------- */
+  (function(){
+    const box = document.getElementById('falling');
+    const items = ['🍂','🌸','🍁','💕','🌸','🍂'];
+    const count = window.innerWidth < 500 ? 10 : 16;
+    for (let i = 0; i < count; i++){
+      const s = document.createElement('span');
+      s.textContent = items[i % items.length];
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.fontSize = (16 + Math.random() * 14) + 'px';
+      s.style.animationDuration = (9 + Math.random() * 10) + 's';
+      s.style.animationDelay = (-Math.random() * 18) + 's';
+      box.appendChild(s);
+    }
+  })();
+
+  /* ---------- "sleeps until" countdown ---------- */
+  (function(){
+    const [y,m,d] = CONFIG.eventDate.split('-').map(Number);
+    const today = new Date();
+    const t0 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const days = Math.round((new Date(y, m-1, d) - t0) / 86400000);
+    const num = document.getElementById('sleeps');
+    const lbl = document.getElementById('sleepsLbl');
+    if (days > 1){ num.textContent = days; }
+    else if (days === 1){ num.textContent = '1'; lbl.innerHTML = 'more sleep until<br>Girlsgiving 😍'; }
+    else if (days === 0){ num.textContent = '🎉'; lbl.innerHTML = "It's Girlsgiving<br>TODAY!"; }
+    else { num.textContent = '💕'; lbl.innerHTML = 'Thank you for a<br>beautiful night!'; }
+  })();
+
+  /* ---------- show/hide extra questions ---------- */
+  const form = document.getElementById('rsvpForm');
+  const extra = document.getElementById('extra');
+  const submitBtn = document.getElementById('submitBtn');
+  extra.style.maxHeight = '0px';
+  extra.classList.add('hidden');
+
+  form.querySelectorAll('input[name=attending]').forEach(r => r.addEventListener('change', () => {
+    const v = r.value;
+    if (v === 'No'){
+      extra.classList.add('hidden');
+      submitBtn.textContent = 'Send my love 💌';
+    } else {
+      extra.classList.remove('hidden');
+      extra.style.maxHeight = extra.scrollHeight + 200 + 'px';
+      submitBtn.textContent = v === 'Yes' ? 'Count me in 💕' : 'Send my RSVP 💕';
+    }
+  }));
+
+  // "I eat everything" un-ticks the others, and vice versa
+  const dietBoxes = [...document.querySelectorAll('#dietChips input')];
+  dietBoxes.forEach(b => b.addEventListener('change', () => {
+    if (!b.checked) return;
+    if (b.value === 'None') dietBoxes.forEach(o => { if (o !== b) o.checked = false; });
+    else dietBoxes.find(o => o.value === 'None').checked = false;
+  }));
+
+  /* ---------- confetti ---------- */
+  function confetti(emojis){
+    const box = document.getElementById('confetti');
+    for (let i = 0; i < 40; i++){
+      const s = document.createElement('span');
+      s.textContent = emojis[i % emojis.length];
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.animationDelay = Math.random() * .8 + 's';
+      s.style.fontSize = (18 + Math.random() * 16) + 'px';
+      box.appendChild(s);
+      setTimeout(() => s.remove(), 3600);
+    }
+  }
+
+  /* ---------- submit ---------- */
+  const errorBox = document.getElementById('error');
+  function showError(msg){
+    errorBox.textContent = msg;
+    errorBox.style.display = 'block';
+    errorBox.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+  form.addEventListener('input', () => { errorBox.style.display = 'none'; });
+  const checked = sel => [...document.querySelectorAll(sel + ' input:checked')].map(i => i.value).join(', ');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.style.display = 'none';
+
+    const name = document.getElementById('name').value.trim();
+    const att = form.querySelector('input[name=attending]:checked');
+    if (!name) return showError("Oops, don't forget your name 🌸");
+    if (!att)  return showError('Please let me know if you can make it 🥺');
+
+    const coming = att.value !== 'No';
+    const data = new URLSearchParams({
+      name,
+      attending: att.value,
+      dietary:      coming ? checked('#dietChips') : '',
+      dietaryNotes: coming ? document.getElementById('dietNotes').value.trim() : '',
+      excited:      coming ? checked('#exciteChips') : '',
+      song:         coming ? document.getElementById('song').value.trim() : '',
+      note: document.getElementById('note').value.trim()
+    });
+
+    submitBtn.disabled = true;
+    const oldLabel = submitBtn.textContent;
+    submitBtn.textContent = 'Sending… 💫';
+
+    try {
+      if (CONFIG.scriptUrl.startsWith('https://')){
+        // Google Apps Script doesn't send back a readable reply to other websites,
+        // so "no-cors" is used: the RSVP is saved, we just can't read the answer.
+        await fetch(CONFIG.scriptUrl, { method:'POST', mode:'no-cors', body:data });
+      } else {
+        console.log('Preview mode: RSVP not saved. Add your script URL in CONFIG.', Object.fromEntries(data));
+        await new Promise(r => setTimeout(r, 600));
+      }
+      showThanks(name.split(' ')[0], att.value);
+    } catch (err){
+      showError("Hmm, that didn't send 😕 Please check your internet and try again, or message Sharon on WhatsApp.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = oldLabel;
+    }
+  });
+
+  function showThanks(first, v){
+    const t = {
+      Yes:   ['🥳', `Yay, ${first}!`, "You're on the list! I can't wait to celebrate with you on Saturday 28th November 💕 Keep an eye on the group chat for the time, address & gift details."],
+      Maybe: ['🤞🏽', `Thanks, ${first}!`, "I've pencilled you in ✏️ Just send me a message (or another RSVP here) once you know for sure 🥰"],
+      No:    ['🥹', `We'll miss you, ${first}!`, "Thank you for letting me know 💕 You'll be with us in spirit, and there's always next year's Girlsgiving 🍂"]
+    }[v];
+    document.getElementById('thanksEmoji').textContent = t[0];
+    document.getElementById('thanksTitle').textContent = t[1];
+    document.getElementById('thanksText').textContent = t[2];
+    form.style.display = 'none';
+    document.getElementById('thanks').style.display = 'block';
+    document.getElementById('rsvp').scrollIntoView({behavior:'smooth'});
+    confetti(v === 'No' ? ['💕','🍂','🌸'] : ['🎉','💕','🍂','🌸','✨','🥂']);
+  }
+
+  document.getElementById('again').addEventListener('click', () => {
+    form.reset();
+    extra.classList.add('hidden');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send my RSVP 💕';
+    document.getElementById('thanks').style.display = 'none';
+    form.style.display = 'block';
+  });
+</script>
+</body>
+</html>
