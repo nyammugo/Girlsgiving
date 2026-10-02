@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Girlsgiving 2026 💕 You're invited</title>
-<meta name="description" content="You're invited to Girlsgiving 2026 — Saturday 28th November. RSVP, make your Secret Santa wishlist & more! 🍂💕">
+<meta name="description" content="You're invited to Girlsgiving 2026 — Saturday 28th November. RSVP, make your Girlsgiving Fairy wishlist & more! 🍂💕">
 <meta property="og:title" content="Girlsgiving 2026 💕 You're invited!">
-<meta property="og:description" content="Saturday 28th November 🍂 Food, Secret Santa & my favourite girls. Tap to RSVP 💌">
+<meta property="og:description" content="Saturday 28th November 🍂 Food, fairy gifts & my favourite girls. Tap to RSVP 💌">
 <meta name="theme-color" content="#F6D6D6">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,23 +77,13 @@
   .dict p:last-child{margin-bottom:0}
   .dict .num{display:inline-block;width:24px;height:24px;border-radius:50%;background:var(--blush);color:var(--rose-deep);font-weight:700;font-size:13px;text-align:center;line-height:24px;margin-right:6px}
 
-  /* house rules flip cards */
-  .rules{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .rule{perspective:900px;height:170px;cursor:pointer;opacity:0;transform:translateY(24px) scale(.95);transition:opacity .5s,transform .5s}
-  .rule.in{opacity:1;transform:none}
-  .rule .inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.4,1.4,.5,1);transform-style:preserve-3d}
-  .rule.flipped .inner{transform:rotateY(180deg)}
-  .rule .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px;border:1.5px solid var(--line);box-shadow:var(--shadow)}
-  .rule .front{background:var(--paper)}
-  .rule:nth-child(odd) .front{background:var(--blush-soft)}
-  .rule .front .e{font-size:44px;animation:wiggle 2.4s ease-in-out infinite}
-  .rule:nth-child(2n) .front .e{animation-delay:.6s}
-  .rule:nth-child(3n) .front .e{animation-delay:1.2s}
-  .rule .front .n{font-family:'Fraunces',serif;font-weight:600;color:var(--plum);margin-top:6px}
-  .rule .front .tap{font-size:12px;color:var(--muted);font-weight:600}
-  .rule .back{background:var(--rose-deep);color:#fff;transform:rotateY(180deg);font-weight:600;font-size:14.5px;line-height:1.4}
-  .rule .back b{display:block;font-size:22px;margin-bottom:4px}
-  @keyframes wiggle{0%,100%{transform:rotate(0) scale(1)}15%{transform:rotate(-12deg) scale(1.1)}30%{transform:rotate(10deg) scale(1.1)}45%{transform:rotate(0) scale(1)}}
+  /* house rules: small emoji bullets in one box */
+  .rules-sec{padding:8px 18px 10px}
+  .rules-card{padding:18px 20px}
+  .rules-title{font-family:'Fraunces',serif;font-weight:600;color:var(--plum);font-size:17px;margin-bottom:8px}
+  .rules{list-style:none}
+  .rules li{display:flex;gap:10px;align-items:baseline;font-size:14px;line-height:1.45;color:var(--ink);padding:4px 0}
+  .rules li .e{flex:0 0 22px;font-size:16px;text-align:center}
   .center{text-align:center;margin-top:16px}
 
   /* plan cards */
@@ -222,12 +212,10 @@
     .choice label .big{font-size:28px}
     .card{padding:22px 16px}
     .wish .wrow{grid-template-columns:1fr 96px}
-    .rule{height:180px}
   }
   @media (prefers-reduced-motion:reduce){
     .falling{display:none}
     *{animation:none !important;transition:none !important}
-    .rule{opacity:1;transform:none}
   }
 </style>
 </head>
@@ -240,8 +228,8 @@
   <a href="#about">💕 About</a>
   <a href="#rules">📜 Rules</a>
   <a href="#rsvp">💌 RSVP</a>
-  <a href="#santa">🎅🏽 Santa</a>
   <a href="#jar">🫙 Jar</a>
+  <a href="#fairy">🧚🏽‍♀️ Fairy</a>
   <a href="#games">🏆 Games</a>
 </div></nav>
 
@@ -251,12 +239,12 @@
     <span class="badge">🍂 Our annual tradition · Year 2 🍂</span>
     <h1>Girlsgiving</h1>
     <div class="year">2026</div>
-    <p class="tag">Good food, a little Secret Santa magic &amp; my favourite girls around one table 💕</p>
+    <p class="tag">Good food, a little Girlsgiving Fairy magic &amp; my favourite girls around one table 💕</p>
     <div class="date-card">
       <div class="day">Saturday 28th November</div>
       <div class="small">Time &amp; address coming soon in the group chat 💌</div>
       <div class="sleeps"><span class="num" id="sleeps">–</span><span class="lbl" id="sleepsLbl">sleeps until<br>Girlsgiving 🥰</span></div>
-      <div class="deadline" id="deadlineLine">⏳ RSVP &amp; wishlist by <span class="js-deadline">Sunday 8th November</span></div>
+      <div class="deadline" id="deadlineLine">⏳ Please RSVP by <span class="js-deadline">Friday 9th October</span></div>
     </div>
     <div class="hero-btns">
       <a href="#rsvp" class="btn">RSVP 💌</a>
@@ -277,11 +265,11 @@
   </section>
 
   <!-- ================= HOUSE RULES ================= -->
-  <section class="wrap" id="rules">
-    <h2>House rules 📜</h2>
-    <p class="sub">Tap each card to reveal the rule 👇🏽</p>
-    <div class="rules" id="rulesGrid"></div>
-    <div class="center"><button class="linkbtn" id="flipAll" type="button">Flip them all ✨</button></div>
+  <section class="wrap rules-sec" id="rules">
+    <div class="card rules-card">
+      <div class="rules-title">House rules 📜</div>
+      <ul class="rules" id="rulesGrid"></ul>
+    </div>
   </section>
 
   <!-- ================= THE PLAN ================= -->
@@ -289,10 +277,10 @@
     <h2>The plan ✨</h2>
     <p class="sub">A cosy night in, girls only</p>
     <div class="plan">
-      <div class="pc"><div class="emoji">🍗</div><div><h3>A home-cooked feast</h3><p>Sharon's cooking for us again, so come hungry 👩🏽‍🍳🥧</p></div></div>
-      <div class="pc"><div class="emoji">🎅🏽</div><div><h3>Secret Santa</h3><p>One thoughtful gift, up to <b>€<span class="js-budget">100</span></b>. Names drawn on <span class="js-drawdate">Monday 9th November</span> 🤫</p></div></div>
+      <div class="pc"><div class="emoji">🍗</div><div><h3>A home-cooked feast</h3><p>I'll be cooking again, so come hungry 👩🏽‍🍳🥧</p></div></div>
+      <div class="pc"><div class="emoji">🧚🏽‍♀️</div><div><h3>The Girlsgiving Fairy</h3><p>One thoughtful gift, up to <b>€<span class="js-budget">100</span></b>. Names drawn on <span class="js-drawdate">Friday 23rd October</span> 🤫</p></div></div>
       <div class="pc"><div class="emoji">🫙</div><div><h3>The gratitude jar</h3><p>Anonymous love notes, read out over dessert 🥹</p></div></div>
-      <div class="pc"><div class="emoji">🏆</div><div><h3>Games &amp; awards</h3><p>Girlsgiving superlatives + "guess your Santa" 🕵🏽‍♀️</p></div></div>
+      <div class="pc"><div class="emoji">🏆</div><div><h3>Games &amp; awards</h3><p>Girlsgiving superlatives + "guess your fairy" 🕵🏽‍♀️</p></div></div>
     </div>
   </section>
 
@@ -306,7 +294,7 @@
   <!-- ================= RSVP ================= -->
   <section class="wrap" id="rsvp">
     <h2>RSVP 💌</h2>
-    <p class="sub">Tell me if you're coming + make your Secret Santa wishlist 🎁</p>
+    <p class="sub">Tell me if you're coming + make your Girlsgiving Fairy wishlist 🎁</p>
     <div class="card">
       <div class="loadbar"><button class="linkbtn" id="showLookup" type="button">Already RSVP'd? Edit your answers or wishlist ✏️</button></div>
       <div class="lookup hidden" id="lookupBox">
@@ -338,7 +326,7 @@
 
         <div id="comingBits" class="hidden">
           <div class="field">
-            <label for="pin">Choose a secret PIN 🔐 <span class="hint">(4 digits — you'll need it to open your Secret Santa envelope &amp; edit your wishlist. Screenshot it!)</span></label>
+            <label for="pin">Choose a secret PIN 🔐 <span class="hint">(4 digits — you'll need it to open your fairy envelope &amp; edit your wishlist. Screenshot it!)</span></label>
             <input type="tel" id="pin" class="pin" placeholder="••••" maxlength="4" inputmode="numeric" autocomplete="off">
           </div>
 
@@ -361,7 +349,7 @@
             <span class="q">What are you most excited for? 🤩 <span class="hint">(pick as many as you like)</span></span>
             <div class="chips" id="exciteChips">
               <div class="chip"><input type="checkbox" id="e1" value="The food"><label for="e1">The food 🍗</label></div>
-              <div class="chip"><input type="checkbox" id="e2" value="Secret Santa"><label for="e2">Secret Santa 🎁</label></div>
+              <div class="chip"><input type="checkbox" id="e2" value="Girlsgiving Fairy"><label for="e2">The fairy gifts 🧚🏽‍♀️</label></div>
               <div class="chip"><input type="checkbox" id="e3" value="The gossip"><label for="e3">The gossip 💅🏽</label></div>
               <div class="chip"><input type="checkbox" id="e4" value="The photos"><label for="e4">The photos 📸</label></div>
               <div class="chip"><input type="checkbox" id="e5" value="The hugs"><label for="e5">The hugs 🤗</label></div>
@@ -370,22 +358,22 @@
           </div>
 
           <div class="field">
-            <label for="song">Add a song to the Girlsgiving playlist 🎶</label>
-            <input type="text" id="song" placeholder="Song – Artist" maxlength="100">
+            <label for="song">Add a song or two to the Girlsgiving playlist 🎶</label>
+            <input type="text" id="song" placeholder="Song – Artist, Song – Artist" maxlength="200">
           </div>
 
           <!-- WISHLIST -->
           <div class="block">
-            <div class="block-title">🎁 My Secret Santa wishlist</div>
-            <p class="block-sub">Add up to <b class="js-maxitems">5</b> wishes. Each one must be <span class="budget-pill">€<span class="js-budget">100</span> or less</span>. Your Santa picks one (or a few little ones that add up to the budget) 💕</p>
+            <div class="block-title">🎁 My Girlsgiving Fairy wishlist</div>
+            <p class="block-sub">Add up to <b class="js-maxitems">5</b> wishes. Each one must be <span class="budget-pill">€<span class="js-budget">100</span> or less</span>. Your fairy picks one (or a few little ones that add up to the budget) 💕<br>✏️ You can edit it until names are drawn on <b class="js-drawdate">Friday 23rd October</b>, so make sure it's up to date by then!</p>
             <div id="wishes"></div>
             <button type="button" class="btn ghost small" id="addWish">+ Add a wish</button>
           </div>
 
           <!-- CHEAT SHEET -->
           <div class="block" style="margin-top:24px">
-            <div class="block-title">📝 Santa cheat sheet</div>
-            <p class="block-sub">Optional, but it helps your Santa if she wants to add a little extra surprise ✨</p>
+            <div class="block-title">📝 Fairy cheat sheet</div>
+            <p class="block-sub">Optional, but it helps your fairy if she wants to add a little extra surprise ✨</p>
             <div class="two">
               <div class="field"><label for="cColour">Fav colour 🎨</label><input type="text" id="cColour" maxlength="80" placeholder="Sage green"></div>
               <div class="field"><label for="cScent">Fav scent 🕯️</label><input type="text" id="cScent" maxlength="80" placeholder="Vanilla, florals…"></div>
@@ -413,42 +401,10 @@
     </div>
   </section>
 
-  <!-- ================= SECRET SANTA ================= -->
-  <section class="wrap" id="santa">
-    <h2>Your Secret Santa 🎅🏽</h2>
-    <p class="sub" id="santaSub">Find out who you're spoiling this year 🤫</p>
-    <div class="card">
-      <div class="env-wrap">
-        <div class="envelope locked" id="envelope" role="button" aria-label="Your Secret Santa envelope">
-          <div class="back"></div>
-          <div class="letter"><small>You're buying for…</small><span>🎁</span><b id="envName">?</b></div>
-          <div class="front"></div>
-          <div class="flap"></div>
-          <div class="seal" id="seal">🔒</div>
-        </div>
-      </div>
-
-      <div id="santaLocked" class="locked-box">
-        <p>Names will be drawn on <b class="js-drawdate">Monday 9th November</b>.<br>Come back then to open your envelope 💌</p>
-      </div>
-
-      <div id="santaForm" class="hidden">
-        <div class="error" id="santaErr"></div>
-        <div class="two">
-          <input type="text" id="sName" placeholder="Your name" autocomplete="name">
-          <input type="tel" id="sPin" class="pin" placeholder="PIN" maxlength="4" inputmode="numeric" style="max-width:none">
-        </div>
-        <div class="center"><button class="btn" id="revealBtn" type="button">Open my envelope 💌</button></div>
-      </div>
-
-      <div id="giftee" class="giftee hidden"></div>
-    </div>
-  </section>
-
   <!-- ================= GRATITUDE JAR ================= -->
   <section class="wrap" id="jar">
     <h2>The gratitude jar 🫙</h2>
-    <p class="sub">Drop in something you're grateful for: about life, this year, or the girls 💕<br><b>Totally anonymous.</b> Sharon reads them out over dessert 🥹</p>
+    <p class="sub">Drop in something you're grateful for: about life, this year, or the girls 💕<br><b>Totally anonymous.</b> Nyambura reads them out over dessert 🥹</p>
     <div class="card">
       <div class="jar-wrap" id="jarWrap">
         <svg width="160" height="200" viewBox="0 0 160 200" aria-hidden="true">
@@ -467,14 +423,46 @@
     </div>
   </section>
 
+  <!-- ================= GIRLSGIVING FAIRY ================= -->
+  <section class="wrap" id="fairy">
+    <h2>Your Girlsgiving Fairy 🧚🏽‍♀️</h2>
+    <p class="sub" id="santaSub">Find out who you're sprinkling fairy magic on this year ✨🤫</p>
+    <div class="card">
+      <div class="env-wrap">
+        <div class="envelope locked" id="envelope" role="button" aria-label="Your Girlsgiving Fairy envelope">
+          <div class="back"></div>
+          <div class="letter"><small>You're buying for…</small><span>🎁</span><b id="envName">?</b></div>
+          <div class="front"></div>
+          <div class="flap"></div>
+          <div class="seal" id="seal">🔒</div>
+        </div>
+      </div>
+
+      <div id="santaLocked" class="locked-box">
+        <p>Names will be drawn on <b class="js-drawdate">Friday 23rd October</b>.<br>Come back then to open your envelope 💌</p>
+      </div>
+
+      <div id="santaForm" class="hidden">
+        <div class="error" id="santaErr"></div>
+        <div class="two">
+          <input type="text" id="sName" placeholder="Your name" autocomplete="name">
+          <input type="tel" id="sPin" class="pin" placeholder="PIN" maxlength="4" inputmode="numeric" style="max-width:none">
+        </div>
+        <div class="center"><button class="btn" id="revealBtn" type="button">Open my envelope 💌</button></div>
+      </div>
+
+      <div id="giftee" class="giftee hidden"></div>
+    </div>
+  </section>
+
   <!-- ================= GAMES ================= -->
   <section class="wrap" id="games">
     <h2>Girlsgiving games 🏆</h2>
-    <p class="sub">Superlatives + guess your Santa. Winners announced on the night! 🎤</p>
+    <p class="sub">Superlatives + guess your fairy. Winners announced on the night! 🎤</p>
     <div class="card">
       <div id="gamesLocked" class="locked-box">
         <div class="big">🔒</div>
-        <p>Voting opens once names are drawn on <b class="js-drawdate">Monday 9th November</b> 🗳️</p>
+        <p>Voting opens once names are drawn on <b class="js-drawdate">Friday 23rd October</b> 🗳️</p>
       </div>
       <form id="gamesForm" class="hidden" novalidate>
         <div class="error" id="gamesErr"></div>
@@ -484,7 +472,7 @@
           <input type="tel" id="gPin" class="pin" placeholder="PIN" maxlength="4" inputmode="numeric" style="max-width:none">
         </div>
         <div class="field">
-          <label for="guess">🕵🏽‍♀️ Who do you think your Secret Santa is?</label>
+          <label for="guess">🕵🏽‍♀️ Who do you think your Girlsgiving Fairy is?</label>
           <select id="guess"></select>
         </div>
         <div id="catFields"></div>
@@ -500,7 +488,7 @@
   </section>
 
   <footer class="wrap">
-    <span class="script">with love, Sharon</span>
+    <span class="script">with love, Nyambura 🦋</span>
     Girlsgiving 2026 · 🍂🌸🍁
   </footer>
 </main>
@@ -515,13 +503,13 @@
    Google Sheet, no need to touch this file.
    ========================================================= */
 const CONFIG = {
-  scriptUrl: "https://script.google.com/macros/s/AKfycbzcwwcU9xY3eQX7lmHTJ2GEF3DjdeOXlKfSvhwH88eQpP1u6JSXILS3tSNH9Vr11RqVhA/exec",
+  scriptUrl: "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE",
   eventDate: "2026-11-28"
 };
 
 /* defaults used until the sheet answers (and in preview mode) */
 let S = {
-  budget:100, maxItems:5, deadline:'Sunday 8th November', drawDate:'Monday 9th November',
+  budget:100, maxItems:5, deadline:'Friday 9th October', drawDate:'Friday 23rd October',
   drawDone:false, showGuests:true, guests:[], voteNames:[], gratitudeCount:0,
   categories:['Most likely to arrive fashionably late ⏰','Best dressed 👗','Most likely to cry at the gratitude jar 🥹','Best hugger 🤗','Most likely to take 300 selfies 📸','Life of the party 💃🏽','Most likely to go back for thirds 🥧']
 };
@@ -553,7 +541,7 @@ async function mockApi(action, p){
   const guests = ['Amara','Wanjiru','Chloe','Aoife','Zainab'];
   switch(action){
     case 'status': return Object.assign({}, S, {ok:true, drawDone:demoDrawn, gratitudeCount:mock.jar,
-      guests: guests.map((n,i) => ({name:n, emoji:['🌸','🍂','💕','✨','🎀'][i]})), voteNames: demoDrawn ? guests.concat('Sharon') : []});
+      guests: guests.map((n,i) => ({name:n, emoji:['🌸','🍂','💕','✨','🎀'][i]})), voteNames: demoDrawn ? guests.concat('Nyambura') : []});
     case 'rsvp': mock.rsvps[p.name.toLowerCase()] = p; return {ok:true};
     case 'lookup': { const d = mock.rsvps[(p.name||'').toLowerCase()]; return d && d.pin === p.pin ? {ok:true, data:d} : {ok:false, error:"Preview mode: RSVP first in this tab, then try again 🙂"}; }
     case 'reveal': return demoDrawn ? {ok:true, budget:S.budget, giftee:{name:'Aoife', wishlist:[
@@ -599,9 +587,9 @@ $('calBtn').addEventListener('click', () => {
   const next = new Date(CONFIG.eventDate + 'T12:00:00'); next.setDate(next.getDate()+1);
   const d2 = next.toISOString().slice(0,10).replace(/-/g,'');
   const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Girlsgiving//EN','BEGIN:VEVENT',
-    'UID:girlsgiving-2026@sharon','DTSTAMP:' + new Date().toISOString().replace(/[-:]/g,'').slice(0,15) + 'Z',
+    'UID:girlsgiving-2026@nyambura','DTSTAMP:' + new Date().toISOString().replace(/[-:]/g,'').slice(0,15) + 'Z',
     'DTSTART;VALUE=DATE:' + d, 'DTEND;VALUE=DATE:' + d2,
-    'SUMMARY:Girlsgiving 2026 🍂💕','DESCRIPTION:Bring your Secret Santa gift 🎁 Time & address in the group chat.',
+    'SUMMARY:Girlsgiving 2026 🍂💕','DESCRIPTION:Bring your Girlsgiving Fairy gift 🎁 Time & address in the group chat.',
     'END:VEVENT','END:VCALENDAR'].join('\r\n');
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([ics], {type:'text/calendar'}));
@@ -615,35 +603,10 @@ const RULES = [
   ['💕','Compliments are mandatory. Minimum three per person, per hour.'],
   ['📸','Phones down at dinner… unless the lighting is good. Then it\'s a photoshoot.'],
   ['🙅🏽‍♀️','No work talk. Anyone who says "let\'s circle back" is on dish duty.'],
-  ['🤫','What happens in Secret Santa stays in Secret Santa. No hints, no leaks, no snitching.'],
+  ['🧚🏽‍♀️','What happens with the Girlsgiving Fairy stays with the Girlsgiving Fairy. No hints, no leaks, no snitching.'],
   ['🥡','Leftovers will be packed. Bring a container or one will be assigned to you.']
 ];
-(function(){
-  const grid = $('rulesGrid');
-  RULES.forEach(([e, txt], i) => {
-    const r = document.createElement('div');
-    r.className = 'rule'; r.tabIndex = 0; r.setAttribute('role','button');
-    r.setAttribute('aria-label', 'House rule ' + (i+1) + ': ' + txt);
-    r.innerHTML = `<div class="inner"><div class="face front"><div class="e">${e}</div><div class="n">Rule #${i+1}</div><div class="tap">tap to reveal</div></div><div class="face back"><b>${e}</b>${esc(txt)}</div></div>`;
-    const flip = () => r.classList.toggle('flipped');
-    r.addEventListener('click', flip);
-    r.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); flip(); } });
-    grid.appendChild(r);
-  });
-  const cards = [...grid.children];
-  if ('IntersectionObserver' in window){
-    const io = new IntersectionObserver(es => es.forEach(en => {
-      if (en.isIntersecting){ const i = cards.indexOf(en.target); setTimeout(() => en.target.classList.add('in'), i*110); io.unobserve(en.target); }
-    }), {threshold:.2});
-    cards.forEach(c => io.observe(c));
-  } else cards.forEach(c => c.classList.add('in'));
-  let all = false;
-  $('flipAll').addEventListener('click', () => {
-    all = !all;
-    cards.forEach((c,i) => setTimeout(() => c.classList.toggle('flipped', all), i*120));
-    $('flipAll').textContent = all ? 'Flip them back 🙈' : 'Flip them all ✨';
-  });
-})();
+$('rulesGrid').innerHTML = RULES.map(([e, txt]) => `<li><span class="e">${e}</span><span>${esc(txt)}</span></li>`).join('');
 
 /* ---------------- confetti ---------------- */
 function confetti(emojis){
@@ -663,7 +626,7 @@ function hideErr(id){ $(id).style.display = 'none'; }
 async function busy(btn, label, fn){
   const old = btn.textContent; btn.disabled = true; btn.textContent = label;
   try { return await fn(); }
-  catch(e){ return {ok:false, error:"Hmm, that didn't send 😕 Check your internet and try again, or message Sharon."}; }
+  catch(e){ return {ok:false, error:"Hmm, that didn't send 😕 Check your internet and try again, or message Nyambura."}; }
   finally { btn.disabled = false; btn.textContent = old; }
 }
 
@@ -776,14 +739,14 @@ form.addEventListener('submit', async e => {
   const pin = $('pin').value.trim();
   let wishes = [];
   if (coming){
-    if (!/^\d{4}$/.test(pin)) return showErr('error', 'Please choose a 4-digit PIN 🔐 (you\'ll need it to open your Secret Santa envelope)');
+    if (!/^\d{4}$/.test(pin)) return showErr('error', 'Please choose a 4-digit PIN 🔐 (you\'ll need it to open your fairy envelope)');
     wishes = readWishes();
     for (const [i,w] of wishes.entries()){
       if (!w.item) return showErr('error', `Wish #${i+1} needs a name 💭`);
       if (!(parseFloat(w.price) > 0)) return showErr('error', `Please add a rough price for "${w.item}" 💶`);
       if (parseFloat(w.price) > S.budget) return showErr('error', `"${w.item}" is over the €${S.budget} budget 🙈`);
     }
-    if (att === 'Yes' && !wishes.length) return showErr('error', 'Add at least 1 wish so your Santa has some ideas 🎁');
+    if (att === 'Yes' && !wishes.length) return showErr('error', 'Add at least 1 wish so your fairy has some ideas 🎁');
   }
   const payload = {
     name, attending:att, pin: coming ? pin : '',
@@ -800,11 +763,11 @@ form.addEventListener('submit', async e => {
 
 function showThanks(first, v, res){
   const t = {
-    Yes:   ['🥳', `Yay, ${first}!`, `You're on the list and your wishlist is saved! 🎁 Names get drawn on ${S.drawDate}, then come back here with your PIN to open your Secret Santa envelope 💌`],
-    Maybe: ['🤞🏽', `Thanks, ${first}!`, `I've pencilled you in ✏️ Come back and switch to "Yes" by ${S.deadline} to be included in the Secret Santa draw 🥰`],
+    Yes:   ['🥳', `Yay, ${first}!`, `You're on the list and your wishlist is saved! 🎁 Names get drawn on ${S.drawDate}, then come back here with your PIN to open your fairy envelope 💌`],
+    Maybe: ['🤞🏽', `Thanks, ${first}!`, `I've pencilled you in ✏️ Come back and switch to "Yes" by ${S.deadline} to be included in the fairy draw 🥰`],
     No:    ['🥹', `We'll miss you, ${first}!`, "Thank you for letting me know 💕 You'll be with us in spirit, and there's always next year's Girlsgiving 🍂"]
   }[v];
-  if (res.lateForDraw) t[2] = "You're on the list! 🥳 Names were already drawn, so Sharon will sort out your Secret Santa match personally 💕";
+  if (res.lateForDraw) t[2] = "You're on the list! 🥳 Names were already drawn, so Nyambura will sort out your fairy match personally 💕";
   $('thanksEmoji').textContent = t[0]; $('thanksTitle').textContent = t[1]; $('thanksText').textContent = t[2];
   form.classList.add('hidden'); document.querySelector('.loadbar').classList.add('hidden'); $('lookupBox').classList.add('hidden');
   $('thanks').classList.remove('hidden');
@@ -841,7 +804,7 @@ $('lookupBtn').addEventListener('click', async () => {
 });
 
 /* =========================================================
-   SECRET SANTA REVEAL
+   GIRLSGIVING FAIRY REVEAL
    ========================================================= */
 async function reveal(){
   if (!S.drawDone || $('envelope').classList.contains('open')) return;
@@ -857,11 +820,11 @@ async function reveal(){
   env.parentElement.classList.add('opened');
   $('santaForm').classList.add('hidden');
   setTimeout(() => {
-    confetti(['🎁','🎅🏽','💕','✨','🎀']);
+    confetti(['🎁','🧚🏽‍♀️','💕','✨','🎀','🦋']);
     const c = g.cheat || {};
     const cheat = [['Fav colour 🎨',c.colour],['Fav scent 🕯️',c.scent],['Sizes 👗',c.sizes],['Obsessed with 😍',c.obsession]].filter(x => x[1]);
     $('giftee').innerHTML = `
-      <p style="text-align:center;font-size:17px">You're <b>${esc(g.name)}</b>'s Secret Santa! 🤫<br><span class="hint">Budget: up to €${esc(res.budget || S.budget)}. Remember, no snitching 🙊</span></p>
+      <p style="text-align:center;font-size:17px">You're <b>${esc(g.name)}</b>'s Girlsgiving Fairy! 🧚🏽‍♀️<br><span class="hint">Budget: up to €${esc(res.budget || S.budget)}. Remember, no snitching 🙊</span></p>
       <h3>🎁 Her wishlist</h3>
       ${(g.wishlist||[]).length ? '<ol>' + g.wishlist.map(w => `<li><span>${esc(w.item)} ${w.link ? `<a href="${esc(w.link)}" target="_blank" rel="noopener">view ↗</a>` : ''}</span><span class="price">€${esc(w.price)}</span></li>`).join('') + '</ol>' : '<p class="hint">No wishlist yet, so check back later or use the cheat sheet 👇🏽</p>'}
       ${cheat.length || c.no ? `<h3>📝 Her cheat sheet</h3><div class="cheat">${cheat.map(x => `<div><b>${x[0]}</b>${esc(x[1])}</div>`).join('')}${c.no ? `<div class="wide"><b>Please, NO 🙅🏽‍♀️</b>${esc(c.no)}</div>` : ''}</div>` : ''}
@@ -916,7 +879,7 @@ $('gamesForm').addEventListener('submit', async e => {
   document.querySelectorAll('#catFields select').forEach(s => { if (s.value) votes[s.dataset.cat] = s.value; });
   const guess = $('guess').value;
   if (!guess && !Object.keys(votes).length) return showErr('gamesErr', 'Pick at least one vote first 🗳️');
-  if (guess && guess.toLowerCase() === name.toLowerCase()) return showErr('gamesErr', "You can't be your own Santa, silly 😂");
+  if (guess && guess.toLowerCase() === name.toLowerCase()) return showErr('gamesErr', "You can't be your own fairy, silly 😂");
   const res = await busy($('voteBtn'), 'Counting… 🗳️', () => api('vote', {name, pin, guess, votes}));
   if (!res || !res.ok) return showErr('gamesErr', (res && res.error) || 'Something went wrong 😕');
   $('gamesForm').classList.add('hidden'); $('gamesThanks').classList.remove('hidden');
