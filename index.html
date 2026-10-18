@@ -766,7 +766,7 @@ function showThanks(first, v, res){
     Maybe: ['🤞🏽', `Thanks, ${first}!`, `I've pencilled you in ✏️ Come back and switch to "Yes" by ${S.deadline} to be included in the fairy draw 🥰`],
     No:    ['🥹', `We'll miss you, ${first}!`, "Thank you for letting me know 💕 You'll be with us in spirit, and there's always next year's Girlsgiving 🍂"]
   }[v];
-  if (res.lateForDraw) t[2] = "You're on the list! 🥳 Names were already drawn, so Nyambura will sort out your fairy match personally 💕";
+  if (res.lateForDraw) t[2] = "You're on the list! 🥳 Sadly names were already drawn, so you won't have a fairy this time! 😥";
   $('thanksEmoji').textContent = t[0]; $('thanksTitle').textContent = t[1]; $('thanksText').textContent = t[2];
   form.classList.add('hidden'); document.querySelector('.loadbar').classList.add('hidden'); $('lookupBox').classList.add('hidden');
   $('thanks').classList.remove('hidden');
