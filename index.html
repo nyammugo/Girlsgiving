@@ -260,7 +260,7 @@
       <div class="word">Girlsgiving</div>
       <div class="pron"><i>noun</i> · /ˈɡɜːlz-ɡɪv-ɪŋ/</div>
       <p><span class="num">1</span>An annual holiday where a group of fabulous women gather to eat far too much, give thoughtful gifts, gossip responsibly (mostly), and remind each other how loved they are. 💕</p>
-      <p><span class="num">2</span>Basically Thanksgiving's cuter little sister 💅🏽 same cosy feast, way better outfits, zero awkward uncles asking when you're settling down, and a strict "you leave fuller, happier and more loved than you arrived" guarantee. The kachumbari spice level is negotiable. The hugs are not. 🌶️🤗</p>
+      <p><span class="num">2</span>Basically Thanksgiving's cuter little sister 💅🏽: same cosy feast, way better outfits, zero awkward uncles asking when you're settling down, and a strict "nobody leaves without a plate" policy. The turkey is negotiable. The hugs are not. 🦃🤗</p>
     </div>
   </section>
 
@@ -279,7 +279,7 @@
     <div class="plan">
       <div class="pc"><div class="emoji">🍗</div><div><h3>A home-cooked feast</h3><p>I'll be cooking again, so come hungry 👩🏽‍🍳🥧</p></div></div>
       <div class="pc"><div class="emoji">🧚🏽‍♀️</div><div><h3>The Girlsgiving Fairy</h3><p>One thoughtful gift, up to <b>€<span class="js-budget">100</span></b>. Names drawn on <span class="js-drawdate">Friday 23rd October</span> 🤫</p></div></div>
-      <div class="pc"><div class="emoji">🫙</div><div><h3>The gratitude jar</h3><p>Anonymous gratitude notes, read out over dessert 🥹</p></div></div>
+      <div class="pc"><div class="emoji">🫙</div><div><h3>The gratitude jar</h3><p>Anonymous love notes, read out over dessert 🥹</p></div></div>
       <div class="pc"><div class="emoji">🏆</div><div><h3>Games &amp; awards</h3><p>Girlsgiving superlatives + "guess your fairy" 🕵🏽‍♀️</p></div></div>
     </div>
   </section>
@@ -404,7 +404,7 @@
   <!-- ================= GRATITUDE JAR ================= -->
   <section class="wrap" id="jar">
     <h2>The gratitude jar 🫙</h2>
-    <p class="sub">Drop in something you're grateful for: about life, this year, or the girls 💕<br><b>Totally anonymous.</b> We will read them out on the day 🥹</p>
+    <p class="sub">Drop in something you're grateful for: about life, this year, or the girls 💕<br><b>Totally anonymous.</b> Nyambura reads them out over dessert 🥹</p>
     <div class="card">
       <div class="jar-wrap" id="jarWrap">
         <svg width="160" height="200" viewBox="0 0 160 200" aria-hidden="true">
@@ -503,7 +503,7 @@
    Google Sheet, no need to touch this file.
    ========================================================= */
 const CONFIG = {
-  scriptUrl: "https://script.google.com/macros/s/AKfycbzcwwcU9xY3eQX7lmHTJ2GEF3DjdeOXlKfSvhwH88eQpP1u6JSXILS3tSNH9Vr11RqVhA/exec",
+  scriptUrl: "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE",
   eventDate: "2026-11-28"
 };
 
@@ -511,7 +511,7 @@ const CONFIG = {
 let S = {
   budget:100, maxItems:5, deadline:'Friday 9th October', drawDate:'Friday 23rd October',
   drawDone:false, showGuests:true, guests:[], voteNames:[], gratitudeCount:0,
-  categories:['Most likely to arrive fashionably late ⏰','Best dressed 👗','Most likely to cry at the gratitude jar 🥹','Best hugger 🤗','Most likely to take 300 selfies 📸','Life of the party 💃🏽','Most likely to go back for thirds 🥧']
+  categories:['Most likely to arrive fashionably late ⏰','Best dressed 👗','Most likely to cry at the gratitude jar 🥹','Best hugger 🤗','Most likely to take 300 selfies 📸','Life of the party 💃🏽','Most likely to remember everyone’s birthday 🎂','Most likely to become famous 🌟']
 };
 
 const LIVE = CONFIG.scriptUrl.startsWith('https://');
@@ -600,10 +600,11 @@ $('calBtn').addEventListener('click', () => {
 /* ---------------- house rules ---------------- */
 const RULES = [
   ['🍗','Stretchy waistbands are encouraged. This is a judgement-free feast zone.'],
-  ['💕','Compliments are mandatory. Leave every girlie feeling a little more beautiful than when she arrived.'],
+  ['💕','Compliments are mandatory. Minimum three per person, per hour.'],
   ['📸','Phones down at dinner… unless the lighting is good. Then it\'s a photoshoot.'],
-  ['🙅🏽‍♀️','No work talk'],
+  ['🙅🏽‍♀️','No work talk. Anyone who says "let\'s circle back" is on dish duty.'],
   ['🧚🏽‍♀️','What happens with the Girlsgiving Fairy stays with the Girlsgiving Fairy. No hints, no leaks, no snitching.'],
+  ['🥡','Leftovers will be packed. Bring a container or one will be assigned to you.']
 ];
 $('rulesGrid').innerHTML = RULES.map(([e, txt]) => `<li><span class="e">${e}</span><span>${esc(txt)}</span></li>`).join('');
 
@@ -766,7 +767,7 @@ function showThanks(first, v, res){
     Maybe: ['🤞🏽', `Thanks, ${first}!`, `I've pencilled you in ✏️ Come back and switch to "Yes" by ${S.deadline} to be included in the fairy draw 🥰`],
     No:    ['🥹', `We'll miss you, ${first}!`, "Thank you for letting me know 💕 You'll be with us in spirit, and there's always next year's Girlsgiving 🍂"]
   }[v];
-  if (res.lateForDraw) t[2] = "You're on the list! 🥳 Sadly names were already drawn, so you won't have a fairy this time! 😥";
+  if (res.lateForDraw) t[2] = "You're on the list! 🥳 Names were already drawn, so Nyambura will sort out your fairy match personally 💕";
   $('thanksEmoji').textContent = t[0]; $('thanksTitle').textContent = t[1]; $('thanksText').textContent = t[2];
   form.classList.add('hidden'); document.querySelector('.loadbar').classList.add('hidden'); $('lookupBox').classList.add('hidden');
   $('thanks').classList.remove('hidden');
