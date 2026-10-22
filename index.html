@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Girlsgiving 2026 💕 You're invited</title>
-<meta name="description" content="You're invited to Girlsgiving 2026 - Saturday 28th November. RSVP, make your Girlsgiving Fairy wishlist & more! 🍂💕">
+<meta name="description" content="You're invited to Girlsgiving 2026 — Saturday 28th November. RSVP, make your Girlsgiving Fairy wishlist & more! 🍂💕">
 <meta property="og:title" content="Girlsgiving 2026 💕 You're invited!">
 <meta property="og:description" content="Saturday 28th November 🍂 Food, fairy gifts & my favourite girls. Tap to RSVP 💌">
 <meta name="theme-color" content="#F6D6D6">
@@ -260,7 +260,7 @@
       <div class="word">Girlsgiving</div>
       <div class="pron"><i>noun</i> · /ˈɡɜːlz-ɡɪv-ɪŋ/</div>
       <p><span class="num">1</span>An annual holiday where a group of fabulous women gather to eat far too much, give thoughtful gifts, gossip responsibly (mostly), and remind each other how loved they are. 💕</p>
-      <p><span class="num">2</span>Basically Thanksgiving's cuter little sister 💅🏽: same cosy feast, way better outfits, zero awkward uncles asking when you're settling down, and a strict "nobody leaves without a plate" policy.</p>
+      <p><span class="num">2</span>Basically Thanksgiving's cuter little sister 💅🏽: same cosy feast, way better outfits, zero awkward uncles asking when you're settling down, and a strict "nobody leaves without a plate" policy. The turkey is negotiable. The hugs are not. 🦃🤗</p>
     </div>
   </section>
 
@@ -398,13 +398,20 @@
         <p id="thanksText"></p>
         <button class="linkbtn" id="again" type="button">Need to change something? Edit my RSVP</button>
       </div>
+
+      <div class="thanks hidden" id="rsvpClosed">
+        <div class="big">🧚🏽‍♀️</div>
+        <h3>RSVPs are now closed</h3>
+        <p>The fairies have been assigned! ✨ Head down to open your envelope 💌<br>Message Nyambura if you need anything 💕</p>
+        <a href="#fairy" class="btn small" style="margin-top:8px">Open my envelope 💌</a>
+      </div>
     </div>
   </section>
 
   <!-- ================= GRATITUDE JAR ================= -->
   <section class="wrap" id="jar">
     <h2>The gratitude jar 🫙</h2>
-    <p class="sub">Drop in something you're grateful for: about life, this year, or the girls 💕<br><b>Totally anonymous.</b> We will read them out on the night 🥹</p>
+    <p class="sub">Drop in something you're grateful for: about life, this year, or the girls 💕<br><b>Totally anonymous.</b> Nyambura reads them out over dessert 🥹</p>
     <div class="card">
       <div class="jar-wrap" id="jarWrap">
         <svg width="160" height="200" viewBox="0 0 160 200" aria-hidden="true">
@@ -503,7 +510,7 @@
    Google Sheet, no need to touch this file.
    ========================================================= */
 const CONFIG = {
-  scriptUrl: "https://script.google.com/macros/s/AKfycbzcwwcU9xY3eQX7lmHTJ2GEF3DjdeOXlKfSvhwH88eQpP1u6JSXILS3tSNH9Vr11RqVhA/exec",
+  scriptUrl: "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE",
   eventDate: "2026-11-28"
 };
 
@@ -600,10 +607,11 @@ $('calBtn').addEventListener('click', () => {
 /* ---------------- house rules ---------------- */
 const RULES = [
   ['🍗','Stretchy waistbands are encouraged. This is a judgement-free feast zone.'],
-  ['💕','Be generous with compliments.'],
-  ['📸','Phones down at dinner…unless the lighting is good. Then it\'s a photoshoot.'],
-  ['🙅🏽‍♀️','No work talk.'],
-  ['🧚🏽‍♀️','What happens with the Girlsgiving Fairy stays with the Girlsgiving Fairy. No hints, no leaks, no snitching.']
+  ['💕','Compliments are mandatory. Minimum three per person, per hour.'],
+  ['📸','Phones down at dinner… unless the lighting is good. Then it\'s a photoshoot.'],
+  ['🙅🏽‍♀️','No work talk. Anyone who says "let\'s circle back" is on dish duty.'],
+  ['🧚🏽‍♀️','What happens with the Girlsgiving Fairy stays with the Girlsgiving Fairy. No hints, no leaks, no snitching.'],
+  ['🥡','Leftovers will be packed. Bring a container or one will be assigned to you.']
 ];
 $('rulesGrid').innerHTML = RULES.map(([e, txt]) => `<li><span class="e">${e}</span><span>${esc(txt)}</span></li>`).join('');
 
@@ -650,6 +658,12 @@ function applyStatus(){
     $('santaSub').textContent = 'Names have been drawn! Enter your name + PIN and tap the envelope 🤫';
     $('gamesLocked').classList.add('hidden'); $('gamesForm').classList.remove('hidden');
     buildGames();
+    // RSVPs closed once the fairies are assigned
+    ['rsvpForm','thanks','lookupBox'].forEach(id => $(id).classList.add('hidden'));
+    document.querySelector('.loadbar').classList.add('hidden');
+    $('rsvpClosed').classList.remove('hidden');
+    document.querySelector('#rsvp .sub').textContent = 'The fairies have been assigned 🧚🏽‍♀️';
+    document.querySelectorAll('.hero-btns a[href="#rsvp"]').forEach(a => { a.href = '#fairy'; a.textContent = 'Open my envelope 💌'; });
   }
   renderJar(S.gratitudeCount);
   updateWishUI();
@@ -847,7 +861,7 @@ function renderJar(n){
     const rot = ((i*37) % 40) - 20;
     g.insertAdjacentHTML('beforeend', `<rect class="${i === show-1 ? 'jar-note-anim' : ''}" x="${x}" y="${y}" width="24" height="15" rx="3" fill="${colours[i % colours.length]}" stroke="#fff" stroke-width="1.5" transform="rotate(${rot} ${x+12} ${y+7})"/>`);
   }
-  $('jarCount').textContent = n ? `${n} love note${n === 1 ? '' : 's'} in the jar 💕` : 'The jar is waiting for its first note ✨';
+  $('jarCount').textContent = n ? `${n} gratitude note${n === 1 ? '' : 's'} in the jar 💕` : 'The jar is waiting for its first note ✨';
 }
 $('jarBtn').addEventListener('click', async () => {
   hideErr('jarErr');
